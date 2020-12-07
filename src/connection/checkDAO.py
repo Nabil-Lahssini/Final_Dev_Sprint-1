@@ -10,5 +10,5 @@ def checkDAOById(id):
     query = "SELECT * FROM business WHERE id = %s;"
     cursor = cnx.cursor()
     count = cursor.execute(query, (id))
-    cnx.commit()
+    cnx.commit() 
     return bool(count != 0)
