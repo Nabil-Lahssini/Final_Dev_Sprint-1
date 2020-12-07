@@ -8,7 +8,6 @@ def setBusiness(p):
     cursor = cnx.cursor()
     cursor.execute(query, (p.name, p.addres,p.appointment_time ,p.email ,p.phone ,p.id_owner))
     cnx.commit()
-    cnx.close()
     return cursor.lastrowid
 
 def getBusinessById(id):
@@ -18,7 +17,6 @@ def getBusinessById(id):
     for (id,name, address, appointment_time, email, phone, id_owner) in cursor:
         business = Business(id, name, address, appointment_time, email, phone, id_owner)
     cnx.commit()
-    cnx.close()
     return business
 
 def getBusinessBySearch(term):
@@ -30,7 +28,6 @@ def getBusinessBySearch(term):
         del business
         business = Business(id, name, address, appointment_time, email, phone, id_owner)
     cnx.commit()
-    cnx.close()
     if business != None:
         return business
     else:
@@ -41,4 +38,3 @@ def deleteBusiness(id):
     cursor = cnx.cursor()
     cursor.execute(query, (id, ))
     cnx.commit()
-    cnx.close()

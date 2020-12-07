@@ -8,7 +8,6 @@ def setAppointment(p):
     cursor = cnx.cursor()
     cursor.execute(query, (p.id, p.firstname, p.lastname, p.email, p.date, p.hour, p.business_id))
     cnx.commit()
-    cnx.close()
     return cursor.lastrowid
 
 def getAppointmentById(id):
@@ -18,7 +17,6 @@ def getAppointmentById(id):
     for (id, firstname, lastname, email, date, hour, business_id) in cursor:
         appointment = Appointment(id, firstname, lastname, email, date, hour, business_id)
     cnx.commit()
-    cnx.close()
     return appointment
 # print(getAppointmentById(2).firstname)
 
