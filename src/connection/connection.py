@@ -1,8 +1,9 @@
 import mysql.connector
+
 def connect() :
-    cnx = mysql.connector.connect(user= , password= ,
-    host=,
-    database='dt5.ehb.be' )
+    cnx = mysql.connector.connect(user= 'root', password= '',
+    host='127.0.0.1',
+    database='programming_project' )
     return cnx
     
 
