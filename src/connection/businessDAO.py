@@ -21,4 +21,24 @@ def getBusinessById(id):
     cnx.close()
     return business
 
+def getBusinessBySearch(term):
+    query = "SELECT * FROM business WHERE name LIKE %s OR address like %s;"
+    cursor = cnx.cursor()
+    cursor.execute(query, (term, term ))
+    business = None
+    for (id,name, address, appointment_time, email, phone, id_owner) in cursor:
+        del business
+        business = Business(id, name, address, appointment_time, email, phone, id_owner)
+    cnx.commit()
+    cnx.close()
+    if business != None:
+        return business
+    else:
+        return None
 
+def deleteBusiness(id):
+    query = "DELETE FROM business where id = %s;"
+    cursor = cnx.cursor()
+    cursor.execute(query, (id, ))
+    cnx.commit()
+    cnx.close()
