@@ -29,4 +29,5 @@ def getAppointmentById(id):
 #     cnx.commit()
 #     cnx.close()
     
+    
 
