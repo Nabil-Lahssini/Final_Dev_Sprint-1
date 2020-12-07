@@ -22,7 +22,7 @@ def getn(text=None):
     image = createQR(text)
     try:
         result = send_file(image.dir, attachment_filename= 'qrcode.png')
-        #clear(image.dir)
+        clear(image.dir)
         return result
     except Exception as e:
         return str(e)
