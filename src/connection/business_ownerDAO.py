@@ -20,6 +20,28 @@ def getBusinessOwnerById(id):
     return business
 
 
+def updateBusinessOwner(p):
+    query = "UPDATE `business_owner` SET `firstname`=%s,`lastname`=%s,`date_of_birth`=%s,`email`=%s,`phone`=%s WHERE id = %s"
+    cursor = cnx.cursor()
+    cursor.execute(query, (p.firstname, p.lastname,p.date_of_birth ,p.email ,p.phone, p.id))
+    cnx.commit()
+    
+test=Business_Owner(1,'anas','bentaher','05/07/2000','anas@anas','05464684')
+
+def deleteBusinessOwner(id):
+    query = "DELETE FROM business_owner where id = %s"
+    cursor = cnx.cursor()
+    cursor.execute(query, (id, ))
+    cnx.commit()
 
 
-print(getBusinessOwnerById(1).firstname)
+def getBusinessBySearch(string):
+    query = "SELECT * FROM business_owner WHERE firstname LIKE %s OR lastname like %s;"
+    cursor = cnx.cursor()
+    cursor.execute(query, ('%'+string+'%', '%'+string+'%'))
+    business_owner = []
+    for (id,firstname, lastname, date_of_birth, email, phone) in cursor:
+        business_owner.append(Business_Owner(id, firstname, lastname, date_of_birth, email, phone))
+    cnx.commit()
+    return business_owner
+
