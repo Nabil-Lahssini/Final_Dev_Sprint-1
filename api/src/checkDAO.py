@@ -6,9 +6,20 @@ cnx = connect()
 
 
 #Check if DAO already exists
-def checkDAOById(id):
-    query = "SELECT * FROM business WHERE id = %s;"
+def checkBusinessById(id):
+    query = "SELECT name FROM business WHERE id = %s;"
     cursor = cnx.cursor()
-    count = cursor.execute(query, (id))
+    cursor.execute(query, (id, ))
+    for(name) in cursor:
+        result=name
     cnx.commit() 
-    return bool(count != 0)
+    return result
+
+def checkBusinessOwnerById(id):
+    query = "SELECT firstname FROM business_owner WHERE id = %s;"
+    cursor = cnx.cursor()
+    cursor.execute(query, (id, ))
+    for(firstname) in cursor:
+        result=firstname
+    cnx.commit() 
+    return result
