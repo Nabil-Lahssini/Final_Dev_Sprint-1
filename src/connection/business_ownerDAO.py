@@ -8,7 +8,6 @@ def setBusinessOwner(p):
     cursor = cnx.cursor()
     cursor.execute(query, (p.firstname, p.lastname,p.date_of_birth ,p.email ,p.phone))
     cnx.commit()
-    cnx.close()
     return cursor.lastrowid
 
 def getBusinessOwnerById(id):
@@ -18,7 +17,6 @@ def getBusinessOwnerById(id):
     for (id,firstname, lastname, date_of_birth, email, phone) in cursor:
         business = Business_Owner(id,firstname, lastname, date_of_birth, email, phone)
     cnx.commit()
-    cnx.close()
     return business
 
 
