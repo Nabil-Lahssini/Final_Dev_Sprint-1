@@ -6,7 +6,10 @@
 #login to database files
 db.json
 key.key
+<<<<<<< HEAD
 settings.json
+=======
+>>>>>>> encryption
 
 # User-specific files
 *.rsuser
