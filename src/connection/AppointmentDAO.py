@@ -29,10 +29,14 @@ def getAppointmentBySearch(term):
     cnx.commit()
     return appointment
 
-def deleteBusiness(id):
+def deleteAppointment(id):
     query = "DELETE FROM appointment where id = %s;"
     cursor = cnx.cursor()
     cursor.execute(query, (id, ))
     cnx.commit()
 
-
+def updateAppointment(p):
+    query = "UPDATE appointment SET `firstname`=%s,`lastname`=%s,`email`=%s,`date`=%s,`hour`=%s,`business_id`=%s WHERE id = %s"
+    cursor = cnx.cursor()
+    cursor.execute(query, (p.firstname, p.lastname, p.email ,p.date ,p.hour, p.business_id, p.id))
+    cnx.commit()
