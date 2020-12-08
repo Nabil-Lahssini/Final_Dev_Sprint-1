@@ -29,5 +29,28 @@ def getAppointmentById(id):
 #     cnx.commit()
 #     cnx.close()
     
+
+def getAppointmentBySearch(term):
+    query = "SELECT * FROM 'appointment' WHERE bussines_id LIKE %s OR id like %s OR firstname like %s OR lastname like %s;"
+    cursor = cnx.cursor()
+    cursor.execute(query, (term, term ))
+    business = None
+    list = [];
+    for (id, firstname, lastname, email, date, hour, business_id) in cursor:
+        del business
+        appointment = Appointment(id, firstname, lastname, email, date, hour, business_id)
+    cnx.commit()
+    cnx.close()
+    if business != None:
+        return business
+    else:
+        return None
+
+def deleteBusiness(id):
+    query = "DELETE FROM business where id = %s;"
+    cursor = cnx.cursor()
+    cursor.execute(query, (id, ))
+    cnx.commit()
+    cnx.close()
     
 
