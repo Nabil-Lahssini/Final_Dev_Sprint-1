@@ -1,4 +1,4 @@
-import mysql.connector
+import mysql.connector 
 
 def connect() :
     cnx = mysql.connector.connect(user= 'root', password= '',
