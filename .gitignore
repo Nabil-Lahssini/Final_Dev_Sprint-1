@@ -8,6 +8,8 @@ db.json
 key.key
 settings.json
 temp
+.vscode/
+
 
 # User-specific files
 *.rsuser
