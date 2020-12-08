@@ -6,6 +6,7 @@
 #login to database files
 db.json
 key.key
+settings.json
 
 # User-specific files
 *.rsuser
