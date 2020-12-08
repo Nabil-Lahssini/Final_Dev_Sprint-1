@@ -42,7 +42,7 @@ def deleteBusiness(id):
     cursor.execute(query, (id, ))
     cnx.commit()
 
-# try:
-#     print(getBusinessBySearch('ab')[0].name)
-# except:
-#     ('nothing found')
+try:
+    print(getBusinessBySearch('ab')[0].name)
+except:
+    ('nothing found')
