@@ -36,9 +36,13 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
 
 
 <div class="container registerBox">
+=======
+<div class="container py-5">
+>>>>>>> 780d4b75fba7f6eef41f5e538b8ed4fd6fbc5158
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

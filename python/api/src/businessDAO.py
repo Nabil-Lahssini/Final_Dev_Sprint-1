@@ -1,19 +1,31 @@
 from connection import connect
 from Entity.business import Business
+from idGenerator import generateId
+from encrypt import encrypt
+from decrypt import decrypt
 
 cnx = connect()
 
-def setBusiness(p):
-    query = "INSERT INTO `business` VALUES (NULL,%s,%s,%s,%s,%s,%s);"
+def setDataBusiness(p):
+    query = "INSERT INTO `business` VALUES (%s,%s,%s,%s,%s,%s,%s);"
     cursor = cnx.cursor()
-    cursor.execute(query, (p.name, p.addres,p.appointment_time ,p.email ,p.phone ,p.id_owner))
+    cursor.execute(query, (p.id ,encrypt(p.name), encrypt(p.address),encrypt(p.appointment_time) ,encrypt(p.email) ,encrypt(p.phone) ,encrypt(p.id_owner)))
     cnx.commit()
-    return cursor.lastrowid
+
+def setBusiness(p):
+    query = "INSERT INTO `search_business` VALUES (NULL,%s,%s);"
+    cursor = cnx.cursor()
+    id = generateId()
+    p.id = id
+    cursor.execute(query, (p.name, id))
+    cnx.commit()
+    setDataBusiness(p)
+    return id
 
 def updateBusiness(p):
     query = "UPDATE `business` SET `name`=%s,`address`=%s,`appointment_time`=%s,`email`=%s,`phone`=%s,`id_owner`=%s WHERE id = %s"
     cursor = cnx.cursor()
-    cursor.execute(query, (p.name, p.address,p.appointment_time ,p.email ,p.phone ,p.id_owner, p.id))
+    cursor.execute(query, (encrypt(p.name), encrypt(p.address),encrypt(p.appointment_time) ,encrypt(p.email) ,encrypt(p.phone) ,encrypt(p.id_owner), p.id))
     cnx.commit()
 
 
@@ -22,17 +34,18 @@ def getBusinessById(id):
     cursor = cnx.cursor()
     cursor.execute(query, (id, ))
     for (id,name, address, appointment_time, email, phone, id_owner) in cursor:
-        business = Business(id, name, address, appointment_time, email, phone, id_owner)
+        business = Business(id, decrypt(name), decrypt(address), decrypt(appointment_time), decrypt(email), decrypt(phone), decrypt(id_owner))
     cnx.commit()
     return business
 
 def getBusinessBySearch(term):
-    query = "SELECT * FROM business WHERE name LIKE %s OR address like %s;"
+    query = "SELECT * FROM `search_business` INNER JOIN business WHERE search_business.token = business.id and search_business.name like %s"
     cursor = cnx.cursor()
-    cursor.execute(query, ('%'+term+'%', '%'+term+'%'))
+    cursor.execute(query, ('%'+term+'%', ))
     business = []
-    for (id,name, address, appointment_time, email, phone, id_owner) in cursor:
-        business.append(Business(id, name, address, appointment_time, email, phone, id_owner))
+    for (id_search, name_search, token, id,name, address, appointment_time, email, phone, id_owner) in cursor:
+        del id_search, name_search, token
+        business.append(Business(id, decrypt(name), decrypt(address), decrypt(appointment_time), decrypt(email), decrypt(phone), decrypt(id_owner)))
     cnx.commit()
     return business
 
@@ -41,8 +54,3 @@ def deleteBusiness(id):
     cursor = cnx.cursor()
     cursor.execute(query, (id, ))
     cnx.commit()
-
-# try:
-#     print(getBusinessBySearch('ab')[0].name)
-# except:
-#     ('nothing found')
