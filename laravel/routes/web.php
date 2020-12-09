@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
+
+=======
 Route::get('/', function () {
     return view('home');
 });
+>>>>>>> f47ac079494430676bb8e78664f481befef59a8f
 
 Route::get('/profile', function () {
     return view('profile');
@@ -23,4 +27,4 @@ Route::get('/profile', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/apointment', [App\Http\Controllers\ApointmentController::class, 'index'])->name('apointment.index');
