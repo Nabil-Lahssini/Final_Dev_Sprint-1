@@ -10,6 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="fullcalendar/core/main.js"></script>
+    <script src="fullcalendar/daygrid/main.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -18,6 +20,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="fullcalendar/core/main.css">
+    <link rel="stylesheet" href="fullcalendar/daygrid/main.css">
 </head>
 <body>
     <div id="app">
