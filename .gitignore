@@ -8,6 +8,7 @@ db.json
 key.key
 settings.json
 temp
+tk
 
 # User-specific files
 *.rsuser
