@@ -3,8 +3,8 @@ import os
 from flask import request
 from flask import send_file
 from flask import jsonify
-from src.qr import createQR,clear
-from src.qr import Img
+from qr import createQR,clear
+from qr import Img
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -12,7 +12,9 @@ app.config["DEBUG"] = True
 #this is the route to get the ip of the client (it can be used to block brute force attack or ddos)
 @app.route("/get_ip", methods=["GET"])
 def get_my_ip():
-    return jsonify({'ip': request.remote_addr}), 200
+    response = jsonify({'ip': request.remote_addr})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 
