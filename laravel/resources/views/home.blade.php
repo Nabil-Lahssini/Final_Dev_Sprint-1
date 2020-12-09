@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<section class="jumbotron text-center">
+<section class="jumbotron text-center" style="padding-top: 20px; margin-bottom:0px; ">
     <div class="container">
-        <h1 class="jumbotron-heading">Welcome</h1>
+        <h1 class="jumbotron-heading" >Welcome</h1>
         <!-- <img src="{{ asset('images/planify.png') }}" alt="main-page-logo"> -->
         <p class="lead text-muted">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
