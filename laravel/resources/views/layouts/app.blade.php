@@ -15,7 +15,11 @@
     <script src="fullcalendar/daygrid/main.js"></script>
     <script src="fullcalendar/timegrid/main.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+<<<<<<< HEAD
     <script src="fullcalendar/list/main.js"></script>
+=======
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+>>>>>>> f47ac079494430676bb8e78664f481befef59a8f
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -30,7 +34,21 @@
 </head>
 
 <body>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* img {
+            background-size: 100em;
+            /* background: no-repeat center 2em; */
+        } */
+    </style>
     <div id="app">
+<<<<<<< HEAD
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -88,11 +106,23 @@
                 </div>
             </div>
         </nav>
+=======
 
-        <main class="py-4">
+
+        <main>
+            @include('layouts.partials.nav')
             @yield('content')
+            @include('layouts.partials.footer')
         </main>
+
+
+>>>>>>> f47ac079494430676bb8e78664f481befef59a8f
+
     </div>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> f47ac079494430676bb8e78664f481befef59a8f
