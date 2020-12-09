@@ -1,12 +1,15 @@
 from connection import connect
 from Entity.business_owner import Business_Owner
+from idGenerator import generateId
+from encrypt import encrypt
+from decrypt import decrypt
 
 cnx = connect()
 
 def setBusinessOwner(p):
-    query = "INSERT INTO business_owner (id,firstname,lastname,date_of_birth,email,phone) VALUES (NULL,%s,%s,%s,%s,%s);"
+    query = "INSERT INTO business_owner (id,firstname,lastname,date_of_birth,email,phone) VALUES (%s,%s,%s,%s,%s,%s);"
     cursor = cnx.cursor()
-    cursor.execute(query, (p.firstname, p.lastname,p.date_of_birth ,p.email ,p.phone))
+    cursor.execute(query, (generateId() ,encrypt(p.firstname), encrypt(p.lastname),encrypt(p.date_of_birth) ,encrypt(p.email) ,encrypt(p.phone)))
     cnx.commit()
     return cursor.lastrowid
 
@@ -15,7 +18,7 @@ def getBusinessOwnerById(id):
     cursor = cnx.cursor()
     cursor.execute(query, (id, ))
     for (id,firstname, lastname, date_of_birth, email, phone) in cursor:
-        business = Business_Owner(id,firstname, lastname, date_of_birth, email, phone)
+        business = Business_Owner(id,decrypt(firstname), decrypt(lastname), decrypt(date_of_birth), decrypt(email), decrypt(phone))
     cnx.commit()
     return business
 
@@ -23,7 +26,7 @@ def getBusinessOwnerById(id):
 def updateBusinessOwner(p):
     query = "UPDATE `business_owner` SET `firstname`=%s,`lastname`=%s,`date_of_birth`=%s,`email`=%s,`phone`=%s WHERE id = %s"
     cursor = cnx.cursor()
-    cursor.execute(query, (p.firstname, p.lastname,p.date_of_birth ,p.email ,p.phone, p.id))
+    cursor.execute(query, (encrypt(p.firstname), encrypt(p.lastname),encrypt(p.date_of_birth) ,encrypt(p.email) ,encrypt(p.phone), p.id))
     cnx.commit()
     
 test=Business_Owner(1,'anas','bentaher','05/07/2000','anas@anas','05464684')
@@ -35,13 +38,7 @@ def deleteBusinessOwner(id):
     cnx.commit()
 
 
-def getBusinessBySearch(string):
-    query = "SELECT * FROM business_owner WHERE firstname LIKE %s OR lastname like %s;"
-    cursor = cnx.cursor()
-    cursor.execute(query, ('%'+string+'%', '%'+string+'%'))
-    business_owner = []
-    for (id,firstname, lastname, date_of_birth, email, phone) in cursor:
-        business_owner.append(Business_Owner(id, firstname, lastname, date_of_birth, email, phone))
-    cnx.commit()
-    return business_owner
+bo = Business_Owner(0,"nabil", 'lahssini','03/10/2001','nabillahssini@gmail.com','0485377213')
+id = setBusinessOwner(bo)
 
+print(getBusinessOwnerById(id).phone)

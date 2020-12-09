@@ -1,12 +1,15 @@
 from connection import connect
 from Entity.appointment import Appointment
+from idGenerator import generateId
+from encrypt import encrypt
+from decrypt import decrypt
 
 cnx = connect()
 
 def setAppointment(p):
-    query = "INSERT INTO appointment VALUES (NULL,%s,%s,%s,%s,%s,%s);"
+    query = "INSERT INTO appointment VALUES (%s,%s,%s,%s,%s,%s,%s);"
     cursor = cnx.cursor()
-    cursor.execute(query, (p.id, p.firstname, p.lastname, p.email, p.date, p.hour, p.business_id))
+    cursor.execute(query, (generateId() ,encrypt(p.firstname), encrypt(p.lastname), encrypt(p.email), encrypt(p.date), encrypt(p.hour), encrypt(p.business_id)))
     cnx.commit()
     return cursor.lastrowid
 
@@ -15,17 +18,17 @@ def getAppointmentById(id):
     cursor = cnx.cursor()
     cursor.execute(query, (id, ))
     for (id, firstname, lastname, email, date, hour, business_id) in cursor:
-        appointment = Appointment(id, firstname, lastname, email, date, hour, business_id)
+        appointment = Appointment(id, decrypt(firstname), decrypt(lastname), decrypt(email), decrypt(date), decrypt(hour), decrypt(business_id))
     cnx.commit()
     return appointment
 
-def getAppointmentBySearch(term):
-    query = "SELECT * FROM appointment WHERE id LIKE %s OR firstname LIKE %s OR lastname LIKE %s OR business_id LIKE %s;"
+def getAppointmentByBusinessId(id):
+    query = "SELECT * FROM appointment WHERE business_id = %s;"
     cursor = cnx.cursor()
-    cursor.execute(query, ('%'+term+'%', '%'+term+'%', '%'+term+'%', '%'+term+'%'))
+    cursor.execute(query, (id, ))
     appointment = []
     for (id, firstname, lastname, email, date, hour, business_id) in cursor:
-        appointment.append(Appointment(id, firstname, lastname, email, date, hour, business_id))
+        appointment.append(Appointment(id, decrypt(firstname), decrypt(lastname), decrypt(email), decrypt(date), decrypt(hour), decrypt(business_id)))
     cnx.commit()
     return appointment
 
@@ -35,8 +38,14 @@ def deleteAppointment(id):
     cursor.execute(query, (id, ))
     cnx.commit()
 
+def deleteAppointmentByBusinessId(id):
+    query = "DELETE FROM appointment where business_id = %s;"
+    cursor = cnx.cursor()
+    cursor.execute(query, (id, ))
+    cnx.commit()
+
 def updateAppointment(p):
     query = "UPDATE appointment SET `firstname`=%s,`lastname`=%s,`email`=%s,`date`=%s,`hour`=%s,`business_id`=%s WHERE id = %s"
     cursor = cnx.cursor()
-    cursor.execute(query, (p.firstname, p.lastname, p.email ,p.date ,p.hour, p.business_id, p.id))
+    cursor.execute(query, (encrypt(p.firstname), encrypt(p.lastname), encrypt(p.email) ,encrypt(p.date) ,encrypt(p.hour), encrypt(p.business_id), p.id))
     cnx.commit()
