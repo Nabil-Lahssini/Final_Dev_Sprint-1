@@ -24,4 +24,3 @@ Route::get('/profile', function () {
 
 Auth::routes();
 
-Route::get('/apointment', [App\Http\Controllers\ApointmentController::class, 'index'])->name('apointment.index');
