@@ -25,6 +25,15 @@ Route::get('/contact_us', function () {
     return view('contact_us');
 });
 
+Route::get('/about_us', function () {
+    return view('about_us');
+});
+
+Route::get('/dashboard', function () {
+    return view('about_us');
+})->name('Dashboard');
+
+
 Auth::routes();
 
 Route::get('/apointment', [App\Http\Controllers\ApointmentController::class, 'index'])->name('apointment.index');
