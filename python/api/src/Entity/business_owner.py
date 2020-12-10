@@ -7,5 +7,13 @@ class Business_Owner:
         self.date_of_birth = date_of_birth
         self.email = email
         self.phone = phone
-        
-    
+
+
+
+# {
+#     "firstname" : "",
+#     "lastname" : "",
+#     "date_of_birth" : "",
+#     "email" : "",
+#     "phone" : ""
+# }
