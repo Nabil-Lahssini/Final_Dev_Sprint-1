@@ -15,8 +15,18 @@
     <script src="fullcalendar/daygrid/main.js"></script>
     <script src="fullcalendar/timegrid/main.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+<<<<<<< HEAD
     <script src="fullcalendar/list/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+=======
+
+    <script src="fullcalendar/list/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/Dashboard.js') }}"></script>
+
+>>>>>>> e4a10ca1317cbd6690459d9e1778d2b3b8d3fc8f
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -24,10 +34,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/Dashboard.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" href="fullcalendar/core/main.css">
     <link rel="stylesheet" href="fullcalendar/daygrid/main.css">
     <link rel="stylesheet" href="fullcalendar/timegrid/main.css">
     <link rel="stylesheet" href="fullcalendar/list/main.css">
+
 </head>
 
 <body>
