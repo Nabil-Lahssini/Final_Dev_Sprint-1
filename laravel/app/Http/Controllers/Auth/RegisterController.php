@@ -74,20 +74,7 @@ class RegisterController extends Controller
     {
 
         $localhost = "http://127.0.0.1:5000";
-        return User::create([
-
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'phone' => $data['phone'],
-            'birthdate' => $data['birthdate'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-            /*
-            Email password birthdate businessowner-id
-            */
-
-        ]);
-
+        
          //API Url
 $url =  $localhost . '/postBusinessOwner';
  
@@ -107,6 +94,9 @@ $jsonData = array(
  
 //Encode the array into JSON.
 $jsonDataEncoded = json_encode($jsonData);
+
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HEADER, 1);
  
 //Tell cURL that we want to send a POST request.
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -120,7 +110,32 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 //Execute the request
 $result = curl_exec($ch);
 
-echo $result;
+// Then, after your curl_exec call:
+$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+$header = substr($result, 0, $header_size);
+$body = substr($result, $header_size);
+
+
+
+
+
+return User::create([
+
+    'firstname' => $data['firstname'],
+    'lastname' => $data['lastname'],
+    'phone' => $data['phone'],
+    'birthdate' => $data['birthdate'],
+    'email' => $data['email'],
+    'password' => Hash::make($data['password']),
+    'businessowner_id' => $body
+    /*
+    Email password birthdate businessowner-id
+    */
+
+]);
+
+
+
 
     }
 }

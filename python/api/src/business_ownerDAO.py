@@ -9,9 +9,10 @@ cnx = connect()
 def setBusinessOwner(p):
     query = "INSERT INTO business_owner (id,firstname,lastname,date_of_birth,email,phone) VALUES (%s,%s,%s,%s,%s,%s);"
     cursor = cnx.cursor()
-    cursor.execute(query, (generateId() ,encrypt(p.firstname), encrypt(p.lastname),encrypt(p.date_of_birth) ,encrypt(p.email) ,encrypt(p.phone)))
+    id = generateId()
+    cursor.execute(query, (id ,encrypt(p.firstname), encrypt(p.lastname),encrypt(p.date_of_birth) ,encrypt(p.email) ,encrypt(p.phone)))
     cnx.commit()
-    return cursor.lastrowid
+    return id
 
 def getBusinessOwnerById(id):
     query = "SELECT * FROM business_owner WHERE id = %s;"

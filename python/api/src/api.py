@@ -67,4 +67,4 @@ def get_business(id = None):
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-app.run("192.168.1.12")
+app.run()

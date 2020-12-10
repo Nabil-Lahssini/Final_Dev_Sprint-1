@@ -20,15 +20,11 @@ class User extends Authenticatable
         'firstname',
         'lastname',
         'phone',
-        'gender',
         'birthdate',
         'email',
         'password',
-        'street',
-        'houseNumber',
-        'city',
-        'postalcode',
-        'country'
+        'businessowner_id'
+        
     ];
 
     /**
