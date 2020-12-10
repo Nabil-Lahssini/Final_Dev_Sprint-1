@@ -31,4 +31,4 @@ Route::get('/apointment', [App\Http\Controllers\ApointmentController::class, 'in
 
 Route::get('/Business', [App\Http\Controllers\BusinessController::class, 'index'])->name('showBusiness');
 
-Route::post('/Business/create', [App\Http\Controllers\BusinessController::class, 'create'])->name('addBusiness');
+Route::post('/Business/create', [App\Http\Controllers\BusinessController::class, 'store'])->name('addBusiness');

@@ -22,8 +22,8 @@
             cursor: pointer;
         }
 
-        .registerBox h3{
-            margin-left: 40px;
+        .registerBox h2{
+            text-align: center;
         }
 
 
@@ -50,7 +50,9 @@
 
                         <br>
 
-                        <h3>Account Information</h3>
+                        <h2>Account Information</h3>
+
+                        <hr>
 
                         <br>
 
@@ -96,26 +98,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
-
-                            <div class="col-md-6">
-
-                            <select name="gender"  id="gender" class="form-control @error('gender') is-invalid @enderror"  required autocomplete="gender">
-
-                            <option value="Men">Men</option>
-                            <option value="Women">Women</option>
-
-                            </select>
-                               
-
-                                @error('gender')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group row">
                             <label for="birthdate" class="col-md-4 col-form-label text-md-right">{{ __('Birthdate') }}</label>
@@ -166,90 +149,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
-                        
-
-                        
-
-                        <br>
-
-                        <h3>Addres</h3>
-
-                        <br>
-
-                        <div class="form-group row">
-                            <label for="street" class="col-md-4 col-form-label text-md-right">{{ __('Street') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="street" type="text" class="form-control @error('street') is-invalid @enderror" name="street" required autocomplete="street">
-
-                                @error('street')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="houseNumber" class="col-md-4 col-form-label text-md-right">{{ __('House number') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="houseNumber" type="number" class="form-control @error('houseNumber') is-invalid @enderror" name="houseNumber" required autocomplete="houseNumber">
-
-                                @error('houseNumber')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" required autocomplete="city">
-
-                                @error('city')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="postalcode" class="col-md-4 col-form-label text-md-right">{{ __('Postalcode') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="postalcode" type="number" class="form-control @error('postalcode') is-invalid @enderror" name="postalcode" required autocomplete="postalcode">
-
-                                @error('postalcode')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country">
-
-                                @error('country')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <br>
-
-
 
                         <br>
                         <br>

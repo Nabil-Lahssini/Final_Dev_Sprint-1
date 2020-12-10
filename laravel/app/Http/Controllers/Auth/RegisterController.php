@@ -55,15 +55,10 @@ class RegisterController extends Controller
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'string', 'max:255'],
             'birthdate' => ['required', 'date', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'street' => ['required', 'string', 'max:255'],
-            'houseNumber' => ['required', 'integer', 'max:255'],
-            'city' => ['required', 'string', 'max:255'],
-            'postalcode' => ['required', 'integer', 'max:255'],
-            'country' => ['required', 'string', 'max:255'],
+            
             
    
         ]);
@@ -77,19 +72,55 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $localhost = "http://127.0.0.1:5000";
         return User::create([
+
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'phone' => $data['phone'],
-            'gender' => $data['gender'],
             'birthdate' => $data['birthdate'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'street' => $data['street'],
-            'houseNumber' => $data['houseNumber'],
-            'city' => $data['city'],
-            'postalcode' => $data['postalcode'],
-            'country' => $data['country'],
+            'password' => Hash::make($data['password'])
+            /*
+            Email password birthdate businessowner-id
+            */
+
         ]);
+
+         //API Url
+$url =  $localhost . '/postBusinessOwner';
+ 
+//Initiate cURL.
+$ch = curl_init($url);
+ 
+//The JSON data.
+$jsonData = array(
+    'firstname' => $data["firstname"],
+    'lastname' => $data["lastname"],
+    'date_of_birth' => $data["birthdate"],
+    'email' => $data["email"],
+    'phone' => $data["phone"]
+    
+    
+);
+ 
+//Encode the array into JSON.
+$jsonDataEncoded = json_encode($jsonData);
+ 
+//Tell cURL that we want to send a POST request.
+curl_setopt($ch, CURLOPT_POST, 1);
+ 
+//Attach our encoded JSON string to the POST fields.
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+ 
+//Set the content type to application/json
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
+ 
+//Execute the request
+$result = curl_exec($ch);
+
+echo $result;
+
     }
 }

@@ -22,6 +22,10 @@
             text-align: center;
         }
 
+        #countryBusiness:hover{
+            cursor: pointer;
+        }
+
 
     </style>
 </head>
@@ -59,7 +63,7 @@
                             <label for="nameBusiness" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nameBusiness" type="text" placeholder="Name..." class="form-control @error('nameBusiness') is-invalid @enderror" name="nameBusiness" required autocomplete="nameBusiness">
+                                <input id="nameBusiness" type="text" placeholder="Name..." class="form-control @error('nameBusiness') is-invalid @enderror" name="nameBusiness" autocomplete="nameBusiness">
 
                                 @error('nameBusiness')
                                     <span class="invalid-feedback" role="alert">
@@ -74,9 +78,24 @@
 
                             <div class="col-md-6">
 
-                            <input id="typeBusiness" type="text" placeholder="Type..." class="form-control @error('typeBusiness') is-invalid @enderror" name="typeBusiness" required autocomplete="typeBusiness">
+                            <input id="typeBusiness" type="text" placeholder="Type..." class="form-control @error('typeBusiness') is-invalid @enderror" name="typeBusiness"  autocomplete="typeBusiness">
 
                             @error('typeBusiness')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                           </span>
+                            @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="appointmentTimeBusiness" class="col-md-4 col-form-label text-md-right">{{ __('Appointment time') }}</label>
+
+                            <div class="col-md-6">
+
+                            <input id="appointmentTimeBusiness" type="time" placeholder="Appointment time..." class="form-control @error('appointmentTimeBusiness') is-invalid @enderror" name="appointmentTimeBusiness"  autocomplete="appointmentTimeBusiness">
+
+                            @error('appointmentTimeBusiness')
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                            </span>
@@ -90,7 +109,7 @@
                             <label for="phoneBusiness" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phoneBusiness" type="tel" placeholder="Phone..." class="form-control @error('phoneBusiness') is-invalid @enderror" name="phoneBusiness" required autocomplete="phoneBusiness">
+                                <input id="phoneBusiness" type="tel" placeholder="Phone..." class="form-control @error('phoneBusiness') is-invalid @enderror" name="phoneBusiness"  autocomplete="phoneBusiness">
 
                                 @error('phoneBusiness')
                                     <span class="invalid-feedback" role="alert">
@@ -104,7 +123,7 @@
                             <label for="emailBusiness" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="emailBusiness" type="email" placeholder="Email..." class="form-control @error('emailBusiness') is-invalid @enderror" name="emailBusiness" required autocomplete="emailBusiness">
+                                <input id="emailBusiness" type="email" placeholder="Email..." class="form-control @error('emailBusiness') is-invalid @enderror" name="emailBusiness"  autocomplete="emailBusiness">
 
                                 @error('emailBusiness')
                                     <span class="invalid-feedback" role="alert">
@@ -114,7 +133,7 @@
                             </div>
                         </div>
 
-                        <h3>Addres</h3>
+                        <h3>Address</h3>
 
                         <br>
 
@@ -122,7 +141,7 @@
                             <label for="streetBusiness" class="col-md-4 col-form-label text-md-right">{{ __('Street') }}</label>
 
                             <div class="col-md-6">
-                                <input id="streetBusiness" type="text" placeholder="Street..." class="form-control @error('streetBusiness') is-invalid @enderror" name="streetBusiness" required autocomplete="streetBusiness">
+                                <input id="streetBusiness" type="text" placeholder="Street..." class="form-control @error('streetBusiness') is-invalid @enderror" name="streetBusiness"  autocomplete="streetBusiness">
 
                                 @error('streetBusiness')
                                     <span class="invalid-feedback" role="alert">
@@ -136,7 +155,7 @@
                             <label for="houseNumberBusiness" class="col-md-4 col-form-label text-md-right">{{ __('House number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="houseNumberBusiness" type="number" placeholder="House Number..." class="form-control @error('houseNumberBusiness') is-invalid @enderror" name="houseNumberBusiness" required autocomplete="houseNumberBusiness">
+                                <input id="houseNumberBusiness" type="number" placeholder="House Number..." class="form-control @error('houseNumberBusiness') is-invalid @enderror" name="houseNumberBusiness"  autocomplete="houseNumberBusiness">
 
                                 @error('houseNumberBusiness')
                                     <span class="invalid-feedback" role="alert">
@@ -150,7 +169,7 @@
                             <label for="cityBusiness" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="cityBusiness" type="text"  placeholder="City..." class="form-control @error('cityBusiness') is-invalid @enderror" name="cityBusiness" required autocomplete="cityBusiness">
+                                <input id="cityBusiness" type="text"  placeholder="City..." class="form-control @error('cityBusiness') is-invalid @enderror" name="cityBusiness"  autocomplete="cityBusiness">
 
                                 @error('cityBusiness')
                                     <span class="invalid-feedback" role="alert">
@@ -164,7 +183,7 @@
                             <label for="postalcodeBusiness" class="col-md-4 col-form-label text-md-right">{{ __('Postalcode') }}</label>
 
                             <div class="col-md-6">
-                                <input id="postalcodeBusiness" type="number" placeholder="Postalcode..." class="form-control @error('postalcodeBusiness') is-invalid @enderror" name="postalcodeBusiness" required autocomplete="postalcodeBusiness">
+                                <input id="postalcodeBusiness" type="number" placeholder="Postalcode..." class="form-control @error('postalcodeBusiness') is-invalid @enderror" name="postalcodeBusiness"  autocomplete="postalcodeBusiness">
 
                                 @error('postalcodeBusiness')
                                     <span class="invalid-feedback" role="alert">
@@ -178,7 +197,10 @@
                             <label for="countryBusiness" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
                             <div class="col-md-6">
-                                <input id="countryBusiness" type="text" placeholder="Country..." class="form-control @error('countryBusiness') is-invalid @enderror" name="countryBusiness" required autocomplete="countryBusiness">
+                                <select id="countryBusiness" type="text"  class="form-control @error('countryBusiness') is-invalid @enderror" name="countryBusiness"  autocomplete="countryBusiness">
+
+                                <option value="Belgium">Belgium</option>
+                                </select>
 
                                 @error('countryBusiness')
                                     <span class="invalid-feedback" role="alert">
