@@ -1,8 +1,9 @@
 import flask, os 
 from flask_ipban import IpBan
-from businessDAO import getBusinessById
+from businessDAO import getBusinessById, setBusiness
 from flask import request, abort, send_file, jsonify
 from qr import createQR,clear,Img
+from parseJson import receiveBusinessJson
 
 app = flask.Flask(__name__)
 
@@ -18,12 +19,14 @@ def block_method():
     if ip in ip_ban_list:
         abort(403)
 
-@app.route('/postjson', methods = ['POST'])
+@app.route('/postBusiness', methods = ['POST'])
 def postJsonHandler():
     print (request.is_json)
     content = request.get_json()
-    print (content)
-    return 'JSON posted'
+    business = receiveBusinessJson(content)
+    id = setBusiness(business)
+    print(id)
+    return id
 
 #this is the route to get the ip of the client (it can be used to block brute force attack or ddos)
 @app.route("/get_ip", methods=["GET"])
