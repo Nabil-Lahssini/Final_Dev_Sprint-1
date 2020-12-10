@@ -27,3 +27,6 @@ Route::get('/contact_us', function () {
 
 Auth::routes();
 
+Route::get('/create', [App\Http\Controllers\CalendarController::class, 'create'])->name('create');
+
+Route::post('/profile',[App\Http\Controllers\CalendarController::class,'store']);

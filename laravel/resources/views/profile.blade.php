@@ -2,12 +2,6 @@
 @section('content')
 
 <script>
-    window.onload = function () {
-        document.getElementById('LondonButton').click();
-    }
-
-</script>
-<script>
     //Test without api
     let event = [{
             "title": "Programming project - sessie ?",
@@ -16,18 +10,29 @@
         },
         {
             "title": "project final  - sessie ?",
-            "start": "2020-12-11 10:10:00",
-            "end": "2020-12-11 11:30:00"
+            "start": "2020-12-11 10:10",
+            "end": "2020-12-11 11:30"
+        },
+        {
+            "title": "test - sessie ?",
+            "start": "2020-12-25 10:10",
+            "end": "2020-12-26 11:30"
+        },
+        {
+            "title": "project final  - sessie ?",
+            "start": "2020-12-11 10:10",
+            "end": "2020-12-12 11:30"
         }
     ];
 
     window.onload = () => {
+        document.getElementById('LondonButton').click();
         let elementCalender = document.getElementById('calendar');
         //We make an instance of the calendar
         let calendar = new FullCalendar.Calendar(elementCalender, {
             //we call the compenents
             plugins: ['dayGrid', 'timeGrid', 'list'],
-            defaultView: 'timeGridWeek',
+            initialView: 'dayGridMonth',
             locale: 'en',
 
             header: {
@@ -48,7 +53,6 @@
         })
         calendar.render();
     }
-
 </script>
 
 <div class="tab container">
@@ -80,12 +84,9 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="input-email">Last name</label>
-<<<<<<< HEAD
                             <input type="email" id="input-email" class="form-control form-control-alternative"
                                 placeholder="Last name">
-=======
                             <input type="text" id="" class="form-control form-control-alternative" placeholder="Last name">
->>>>>>> ae34765a262f08ba08f0386336862df8e6f3ca5f
                         </div>
                     </div>
                 </div>
@@ -115,12 +116,9 @@
                     <div class="col-lg-6">
                         <div class="form-group focused">
                             <label class="form-control-label" for="input-first-name">Email</label>
-<<<<<<< HEAD
                             <input type="text" id="input-first-name" class="form-control form-control-alternative"
                                 placeholder="email@example.com" value="">
-=======
                             <input type="e-mail" id="input-email" class="form-control form-control-alternative" placeholder="email@example.com" value="">
->>>>>>> ae34765a262f08ba08f0386336862df8e6f3ca5f
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -214,22 +212,21 @@
 <div id="Paris" class="tabcontent container">
     <div class="card-body .py-nopadding  container" style='padding-top: 0px;'>
         <p style="padding-top: 16px; font-size:2em;">Calendar</p>
-
+        <a href="{{route('create')}}" class="btn btn-primary py-3">Make appointment</a>
         <hr>
-<<<<<<< HEAD
+
         
-=======
+
         <div class="container">
             <div id="calendar" class="py-5">
 
-<<<<<<< HEAD
+
             </div>
         </div>
-=======
+
     </div>
     </div>
->>>>>>> bdfef40ac7fdfc674ca1306353a9f7614b98baa6
->>>>>>> ae34765a262f08ba08f0386336862df8e6f3ca5f
+
     </div>
 
 </div>
