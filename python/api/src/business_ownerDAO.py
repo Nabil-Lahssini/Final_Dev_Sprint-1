@@ -17,7 +17,9 @@ def getBusinessOwnerById(id):
     query = "SELECT * FROM business_owner WHERE id = %s;"
     cursor = cnx.cursor()
     cursor.execute(query, (id, ))
+    business = None
     for (id,firstname, lastname, date_of_birth, email, phone) in cursor:
+        del business
         business = Business_Owner(id,decrypt(firstname), decrypt(lastname), decrypt(date_of_birth), decrypt(email), decrypt(phone))
     cnx.commit()
     return business
@@ -37,8 +39,3 @@ def deleteBusinessOwner(id):
     cursor.execute(query, (id, ))
     cnx.commit()
 
-
-bo = Business_Owner(0,"nabil", 'lahssini','03/10/2001','nabillahssini@gmail.com','0485377213')
-id = setBusinessOwner(bo)
-
-print(getBusinessOwnerById(id).phone)

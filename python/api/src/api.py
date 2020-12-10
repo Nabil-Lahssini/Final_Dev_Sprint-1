@@ -1,9 +1,10 @@
 import flask, os 
 from flask_ipban import IpBan
 from businessDAO import getBusinessById, setBusiness
+from business_ownerDAO import setBusinessOwner
 from flask import request, abort, send_file, jsonify
 from qr import createQR,clear,Img
-from parseJson import receiveBusinessJson
+from parseJson import receiveBusinessJson, receiveBusinessOwnerJson
 
 app = flask.Flask(__name__)
 
@@ -11,6 +12,7 @@ app.config["DEBUG"] = True
 
 ip_ban = IpBan(app= app, ban_seconds=300, ban_count=10)
 
+#this will check if an ip is in the blacklist and will automatically send a 403 forbidden
 @app.before_request
 def block_method():
     text_file = open('blacklist')
@@ -19,12 +21,23 @@ def block_method():
     if ip in ip_ban_list:
         abort(403)
 
+#to et a json file and send it to the database, return the id
 @app.route('/postBusiness', methods = ['POST'])
-def postJsonHandler():
+def postBusiness():
     print (request.is_json)
     content = request.get_json()
     business = receiveBusinessJson(content)
     id = setBusiness(business)
+    print(id)
+    return id
+
+#to et a json file and send it to the database, return the id
+@app.route('/postBusinessOwner', methods = ['POST'])
+def postBusinessOwner():
+    print (request.is_json)
+    content = request.get_json()
+    businessOwner = receiveBusinessOwnerJson(content)
+    id = setBusinessOwner(businessOwner)
     print(id)
     return id
 

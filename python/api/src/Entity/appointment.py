@@ -7,3 +7,4 @@ class Appointment:
             self.date = date
             self.hour = hour
             self.business_id = business_id
+
