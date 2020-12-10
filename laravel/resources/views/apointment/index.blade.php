@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-    <div id="calendar">
+    <div id="calendar" class="py-5">
 
     </div>
     </div>
