@@ -13,12 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
 
-Route::get('/', function () {
-    return view('home');
-});
-=======
 Route::get('/', function () {
     return view('home');
 });
@@ -26,7 +21,6 @@ Route::get('/', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
->>>>>>> e4a10ca1317cbd6690459d9e1778d2b3b8d3fc8f
 
 Auth::routes();
 

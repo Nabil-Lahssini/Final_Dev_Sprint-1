@@ -25,9 +25,6 @@ function openCity(evt, cityName) {
 
 
 
-window.onload = function(){
-    document.getElementById('LondonButton').click();
-}
 
 // function addClass() {
 //     button = document.getElementById('London')
