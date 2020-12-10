@@ -195,7 +195,7 @@
                             <label for="houseNumber" class="col-md-4 col-form-label text-md-right">{{ __('House number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="houseNumber" type="number" class="form-control @error('street') is-invalid @enderror" name="houseNumber" required autocomplete="houseNumber">
+                                <input id="houseNumber" type="number" class="form-control @error('houseNumber') is-invalid @enderror" name="houseNumber" required autocomplete="houseNumber">
 
                                 @error('houseNumber')
                                     <span class="invalid-feedback" role="alert">

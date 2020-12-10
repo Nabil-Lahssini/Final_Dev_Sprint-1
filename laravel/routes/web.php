@@ -28,3 +28,7 @@ Route::get('/contact_us', function () {
 Auth::routes();
 
 Route::get('/apointment', [App\Http\Controllers\ApointmentController::class, 'index'])->name('apointment.index');
+
+Route::get('/Business', [App\Http\Controllers\BusinessController::class, 'index'])->name('showBusiness');
+
+Route::post('/Business/create', [App\Http\Controllers\BusinessController::class, 'create'])->name('addBusiness');
