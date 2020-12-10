@@ -21,6 +21,9 @@ Route::get('/', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+Route::get('/contact_us', function () {
+    return view('contact_us');
+});
 
 Auth::routes();
 

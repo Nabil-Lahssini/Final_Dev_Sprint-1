@@ -58,6 +58,7 @@
 </div>
 
 <!-- Tab content -->
+<!-- Profile tab -->
 <div id="London" class="tabcontent container">
 
     <div class="card-body .py-nopadding  container" style='padding-top: 0px'>
@@ -79,8 +80,12 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="input-email">Last name</label>
+<<<<<<< HEAD
                             <input type="email" id="input-email" class="form-control form-control-alternative"
                                 placeholder="Last name">
+=======
+                            <input type="text" id="" class="form-control form-control-alternative" placeholder="Last name">
+>>>>>>> ae34765a262f08ba08f0386336862df8e6f3ca5f
                         </div>
                     </div>
                 </div>
@@ -110,8 +115,12 @@
                     <div class="col-lg-6">
                         <div class="form-group focused">
                             <label class="form-control-label" for="input-first-name">Email</label>
+<<<<<<< HEAD
                             <input type="text" id="input-first-name" class="form-control form-control-alternative"
                                 placeholder="email@example.com" value="">
+=======
+                            <input type="e-mail" id="input-email" class="form-control form-control-alternative" placeholder="email@example.com" value="">
+>>>>>>> ae34765a262f08ba08f0386336862df8e6f3ca5f
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -201,17 +210,26 @@
 </div>
 </div>
 </div>
-
+<!-- Profile tab -->
 <div id="Paris" class="tabcontent container">
     <div class="card-body .py-nopadding  container" style='padding-top: 0px;'>
         <p style="padding-top: 16px; font-size:2em;">Calendar</p>
 
         <hr>
+<<<<<<< HEAD
+        
+=======
         <div class="container">
             <div id="calendar" class="py-5">
 
+<<<<<<< HEAD
             </div>
         </div>
+=======
+    </div>
+    </div>
+>>>>>>> bdfef40ac7fdfc674ca1306353a9f7614b98baa6
+>>>>>>> ae34765a262f08ba08f0386336862df8e6f3ca5f
     </div>
 
 </div>
