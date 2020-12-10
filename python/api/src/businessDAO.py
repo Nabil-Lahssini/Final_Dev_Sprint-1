@@ -9,7 +9,7 @@ cnx = connect()
 def setDataBusiness(p):
     query = "INSERT INTO `business` VALUES (%s,%s,%s,%s,%s,%s,%s);"
     cursor = cnx.cursor()
-    cursor.execute(query, (p.id ,encrypt(p.name), encrypt(p.address),encrypt(p.appointment_time) ,encrypt(p.email) ,encrypt(p.phone) ,encrypt(p.id_owner)))
+    cursor.execute(query, (p.id , encrypt (p.business_type), encrypt(p.name), encrypt(p.address),encrypt(p.appointment_time) ,encrypt(p.email) ,encrypt(p.phone) ,encrypt(p.id_owner)))
     cnx.commit()
 
 def setBusiness(p):
@@ -33,8 +33,8 @@ def getBusinessById(id):
     query = "SELECT * FROM business WHERE id = %s;"
     cursor = cnx.cursor()
     cursor.execute(query, (id, ))
-    for (id,name, address, appointment_time, email, phone, id_owner) in cursor:
-        business = Business(id, decrypt(name), decrypt(address), decrypt(appointment_time), decrypt(email), decrypt(phone), decrypt(id_owner))
+    for (id,business_type, name, address, appointment_time, email, phone, id_owner) in cursor:
+        business = Business(id, decrypt(business_type), decrypt(name), decrypt(address), decrypt(appointment_time), decrypt(email), decrypt(phone), decrypt(id_owner))
     cnx.commit()
     return business
 
@@ -43,9 +43,9 @@ def getBusinessBySearch(term):
     cursor = cnx.cursor()
     cursor.execute(query, ('%'+term+'%', ))
     business = []
-    for (id_search, name_search, token, id,name, address, appointment_time, email, phone, id_owner) in cursor:
+    for (id_search, name_search, token, id,business_type, name, address, appointment_time, email, phone, id_owner) in cursor:
         del id_search, name_search, token
-        business.append(Business(id, decrypt(name), decrypt(address), decrypt(appointment_time), decrypt(email), decrypt(phone), decrypt(id_owner)))
+        business.append(Business(id, decrypt(business_type), decrypt(name), decrypt(address), decrypt(appointment_time), decrypt(email), decrypt(phone), decrypt(id_owner)))
     cnx.commit()
     return business
 

@@ -1,0 +1,12 @@
+{
+    "type" : "",
+    "name" : "",
+    "appointment_time" : "",
+    "city" : "",
+    "code" : "",
+    "street": "",
+    "house_nr": "",
+    "email" : "",
+    "phone" : "",
+    "id_owner" : ""
+}
