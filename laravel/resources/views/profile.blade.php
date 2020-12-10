@@ -4,24 +4,22 @@
 <script>
     //Test without api
     let event = [{
-            "title": "Programming project - sessie ?",
-            "start": "2020-12-10 10:10:00",
-            "end": "2020-12-10 11:00:00"
+            "id": "1",
+            "start": "2020-12-18 13:59:00",
+            "end": "2020-12-19 14:59:00",
+            "title": "omer",
+            "description": "baard",
+            "created_at": "2020-12-10 11:58:17",
+            "updated_at": "2020-12-10 11:58:17"
         },
         {
-            "title": "project final  - sessie ?",
-            "start": "2020-12-11 10:10",
-            "end": "2020-12-11 11:30"
-        },
-        {
-            "title": "test - sessie ?",
-            "start": "2020-12-25 10:10",
-            "end": "2020-12-26 11:30"
-        },
-        {
-            "title": "project final  - sessie ?",
-            "start": "2020-12-11 10:10",
-            "end": "2020-12-12 11:30"
+            "id": "2",
+            "start": "2020-12-11 15:35:00",
+            "end": "2020-12-11 16:37:00",
+            "title": "omer can ozdmir",
+            "description": "haar",
+            "created_at": "2020-12-10 12:35:13",
+            "updated_at": "2020-12-10 12:35:13"
         }
     ];
 
@@ -49,10 +47,12 @@
                 week: 'Week',
                 list: 'List'
             },
-            events: event
+            events: event,
+            nowIndicator: true
         })
         calendar.render();
     }
+
 </script>
 
 <div class="tab container">
@@ -86,7 +86,8 @@
                             <label class="form-control-label" for="input-email">Last name</label>
                             <input type="email" id="input-email" class="form-control form-control-alternative"
                                 placeholder="Last name">
-                            <input type="text" id="" class="form-control form-control-alternative" placeholder="Last name">
+                            <input type="text" id="" class="form-control form-control-alternative"
+                                placeholder="Last name">
                         </div>
                     </div>
                 </div>
@@ -118,7 +119,8 @@
                             <label class="form-control-label" for="input-first-name">Email</label>
                             <input type="text" id="input-first-name" class="form-control form-control-alternative"
                                 placeholder="email@example.com" value="">
-                            <input type="e-mail" id="input-email" class="form-control form-control-alternative" placeholder="email@example.com" value="">
+                            <input type="e-mail" id="input-email" class="form-control form-control-alternative"
+                                placeholder="email@example.com" value="">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -215,7 +217,7 @@
         <a href="{{route('create')}}" class="btn btn-primary py-3">Make appointment</a>
         <hr>
 
-        
+
 
         <div class="container">
             <div id="calendar" class="py-5">
@@ -225,9 +227,9 @@
         </div>
 
     </div>
-    </div>
+</div>
 
-    </div>
+</div>
 
 </div>
 

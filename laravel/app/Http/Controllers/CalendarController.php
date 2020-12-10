@@ -14,8 +14,8 @@ class CalendarController extends Controller
         $data=request()->validate([
             'start'=>'required',
             'end'=>'required',
-            'title'=>'required',
-            'description'=>'required'
+            'title'=>'required'
+            
         ]);
         Calendar::create($data);
         return redirect('/profile');
