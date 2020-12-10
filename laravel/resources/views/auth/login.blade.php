@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
+                <div class="card-body py-5">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

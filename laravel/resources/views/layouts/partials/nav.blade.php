@@ -5,7 +5,7 @@
                     <img style="width: auto; height:50px" class="images" src="{{ asset('images/logo.PNG') }}">
                 </a>
                 <!-- <a href="#" class="pull-left"><img src="/path/to/image.png"></a>  -->
-                <a class="navbar-brand" href="{{ url('/solutions') }}">
+                <a class="navbar-brand" href="{{ url('profile') }}">
                     Solutions
                 </a>
                 <a class="navbar-brand" href="{{ url('/about_us') }}">
