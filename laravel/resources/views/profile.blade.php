@@ -15,6 +15,7 @@
 </div>
 
 <!-- Tab content -->
+<!-- Profile tab -->
 <div id="London" class="tabcontent container">
 
     <div class="card-body .py-nopadding  container" style='padding-top: 0px'>
@@ -35,7 +36,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="input-email">Last name</label>
-                            <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Last name">
+                            <input type="text" id="" class="form-control form-control-alternative" placeholder="Last name">
                         </div>
                     </div>
                 </div>
@@ -63,7 +64,7 @@
                     <div class="col-lg-6">
                         <div class="form-group focused">
                             <label class="form-control-label" for="input-first-name">Email</label>
-                            <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="email@example.com" value="">
+                            <input type="e-mail" id="input-email" class="form-control form-control-alternative" placeholder="email@example.com" value="">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -143,11 +144,12 @@
 </div>
 </div>
 </div>
-
+<!-- Profile tab -->
 <div id="Paris" class="tabcontent container">
     <div class="card-body .py-nopadding  container" style='padding-top: 0px;'>
         <p style="padding-top: 16px; font-size:2em;">Calendar</p>
         <hr>
+        
     </div>
 
 </div>
