@@ -1,7 +1,7 @@
 class Business:
   def __init__(self,id,business_type,name,appointment_time,country,city,code,street,house_nr,email,phone,id_owner):
         self.id=id
-        self.type = business_type
+        self.business_type = business_type
         self.name=name
         self.appointment_time=appointment_time
         self.country=country

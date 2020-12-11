@@ -1,7 +1,8 @@
-import flask, os 
+import flask, os , parseJson
 from flask_ipban import IpBan
-from businessDAO import getBusinessById, setBusiness
-from business_ownerDAO import setBusinessOwner
+from businessDAO import getBusinessById, setBusiness, deleteBusiness
+from business_ownerDAO import setBusinessOwner, deleteBusinessOwner
+from AppointmentDAO import deleteAppointmentByBusinessId
 from flask import request, abort, send_file, jsonify
 from qr import createQR,clear,Img
 from parseJson import receiveBusinessJson, receiveBusinessOwnerJson
@@ -60,11 +61,22 @@ def getn(text=None):
     except Exception as e:
         return str(e)
 
-@app.route("/get_business/<id>", methods=["GET"])
-def get_business(id = None):
-    b = getBusinessById(id)
-    response = jsonify({'name': b.name})
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
+@app.route("/delete_all_business/<business_id>", methods=["DELETE"])
+def delete_all_business(id = None):
+    business = getBusinessById(id)
+    deleteAppointmentByBusinessId(business.id)
+    deleteBusinessOwner(business.id_owner)
+    deleteBusiness(id)
+    return True
+
+@app.route("/getBusiness/<business_id>", methods=["GET"])
+def get_business(business_id = None):
+    json_file = parseJson.sendBusiness(business_id)
+    return json_file
+
+@app.route("/getBusinessOwner/<owner_id>", methods=["GET"])
+def getBusinessOwner(owner_id = None):
+    json_file = parseJson.sendBusinessOwner(owner_id)
+    return json_file
 
 app.run("192.168.1.12")
