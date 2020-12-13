@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
-<script>
+<!-- <script>
     window.onload = function() {
         document.getElementById('LondonButton').click();
     }
-</script>
+</script> -->
 <script>
     //Test without api
     let event = [{
@@ -21,6 +21,9 @@
 ];
 
     window.onload=() =>{
+        // Dashboard click event
+        document.getElementById('LondonButton').click();
+
         let elementCalender = document.getElementById('calendar');
         //We make an instance of the calendar
         let calendar= new FullCalendar.Calendar(elementCalender,{
@@ -48,7 +51,7 @@
         calendar.render();
     }
 </script>
-
+<div style="margin-bottom: 15px; margin-top:15px">
 <div class="tab container">
     <button class="tablinks" id="LondonButton"  onclick="openCity(event, 'London')">Account</button>
     <button class="tablinks" onclick="openCity(event, 'Paris')">Calendar</button>
@@ -167,7 +170,7 @@
             <!-- <hr class="my-4"> -->
             <br>
             <div class="container">
-                <button type="button" class="btn btn-secondary" disabled>Cancel</button>
+                <button type="button" class="btn btn-secondary">Cancel</button>
                 <button type="button" class="btn btn-secondary">Submit</button>
             </div>
             <!-- Description -->
@@ -191,15 +194,12 @@
         <p style="padding-top: 16px; font-size:2em;">Calendar</p>
     
         <hr>
-<<<<<<< HEAD
         
-=======
-        <div class="container">
+        <div class="container card-body">
     <div id="calendar" class="py-5">
 
     </div>
     </div>
->>>>>>> bdfef40ac7fdfc674ca1306353a9f7614b98baa6
     </div>
 
 </div>
@@ -211,7 +211,7 @@
     </div>
 </div>
 
-
+</div>
 
 
 
