@@ -3,7 +3,7 @@ import os
 import pathlib
 from datetime import date
 
- 
+
 
 #generate a little class to return 2 values easily
 class Img: 

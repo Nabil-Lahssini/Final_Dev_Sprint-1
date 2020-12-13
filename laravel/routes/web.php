@@ -18,20 +18,29 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
+Route::get('/search', function () {
+    return view('search');
 });
 Route::get('/contact_us', function () {
     return view('contact_us');
 });
 
-Route::get('/about_us', function () {
-    return view('about_us');
+Route::get('/business_info', function () {
+    return view('business_info');
 });
 
+
 Route::get('/dashboard', function () {
-    return view('about_us');
-})->name('Dashboard');
+    return view('profile');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
 
 
 Auth::routes();

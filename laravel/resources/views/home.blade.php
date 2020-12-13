@@ -1,73 +1,47 @@
 @extends('layouts.app')
 @section('content')
-<section class="jumbotron text-center" style="padding-top: 20px; margin-bottom:0px; ">
+<!-- <section class="jumbotron text-center" style="margin-bottom: 16px;">
     <div class="container">
-        <h1 class="jumbotron-heading" >Welcome</h1>
-        <!-- <img src="{{ asset('images/planify.png') }}" alt="main-page-logo"> -->
-        <p class="lead text-muted">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-
-        <div class="input-group mb-4 border rounded-pill p-1">
-            <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon3" class="form-control bg-none border-0">
-
-        </div>
-        <div style="width: 930px; height:620px;" class="container">
-
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
-                    <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
-                    <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active ">
-                        <img src="{{ asset('images/Carousel1.png') }}" style="display: block" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item ">
-                        <img src="{{ asset('images/Carousel2.png') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('images/Piece-carousel3.png') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </a>
-            </div>
-        </div>
-
-
-    </div>
-</section>
-
-<!-- <section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading">About us </h1>
-        <p class="lead text-muted">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-        <p>
-            <a href="{{ url('/login') }}" class="btn btn-primary">Login</a>
-            <a href="{{ url('/register') }}" class="btn btn-secondary">Register</a>
-        </p>
+        <h1 class="jumbotron-heading">ABOUT US</h1>
+        <p class="lead text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
     </div>
 </section> -->
 
+<div class="bg-light">
+    <div class="container py-5">
+        <div class="row h-100 align-items-center py-5">
+            <div class="col-lg-6">
+                <h1 class="display-4">Welcome</h1>
+                <p class="lead text-muted mb-0">Fast and easy way of managing your appointments. Register for free and grow your business.</p>
+                <!-- <p class="lead text-muted">Snippet by <a href="https://bootstrapious.com/snippets" class="text-muted">
+                        <u>Bootstrapious</u></a>
+                </p> -->
+            </div>
+            <div class="col-lg-6 d-none d-lg-block"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834136/illus_kftyh4.png" alt="" class="img-fluid"></div>
+        </div>
+    </div>
+</div>
 
+<div class="bg-white py-5">
+    <div class="container py-5">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
+                <h2 class="font-weight-light">For business owners</h2>
+                <p class="font-italic text-muted mb-4">Click the link below to register for free a account</p>
+                <!-- <a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a> -->
+                <button type="button" class="btn btn-secondary" onclick= "window.location='{{ url("/register") }}'"> Register now</button>
+            </div>
+            <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834139/img-1_e25nvh.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-5 px-5 mx-auto"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834136/img-2_vdgqgn.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+            <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+                <h2 class="font-weight-light">For clients</h2>
+                <p class="font-italic text-muted mb-4">Use our search function to look for businesses in your area.</p>
+                <!-- <a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a> -->
+                <button type="button" class="btn btn-secondary" onclick= "window.location='{{ url("/search") }}'">Search now</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

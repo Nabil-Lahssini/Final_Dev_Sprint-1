@@ -30,6 +30,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/About_us.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/business_info.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="fullcalendar/core/main.css">
     <link rel="stylesheet" href="fullcalendar/daygrid/main.css">
