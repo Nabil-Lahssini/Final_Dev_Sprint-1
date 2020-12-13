@@ -3,12 +3,36 @@ import businessDAO, json, business_ownerDAO
 from Entity.business import Business
 from Entity.appointment import Appointment
 from Entity.business_owner import Business_Owner
-from AppointmentDAO import getAppointmentByBusinessId
+from AppointmentDAO import getAppointmentByBusinessId, getAppointmentByToken
 from Entity.appointment import Appointment
 
+#Converts a json file that contains a business to a business object
 def receiveBusinessJson(json_file):
     business = Business(0, json_file["business_type"], json_file["name"],json_file["appointment_time"],json_file["country"],json_file["city"],json_file["code"],json_file["street"],json_file["house_nr"],  json_file["email"],json_file["phone"],json_file["id_owner"])
     return business
+
+#Converts an array of appointments retrieved in the database with on the business id to a JSON file
+def sendAppointmentJson(business_id):
+    array_appointments = getAppointmentByBusinessId(business_id)
+    jso = []
+    for app in array_appointments:
+        js = {"id":app.id,"title": app.firstname + ' '+app.lastname, "begin" : app.begin_date, "end" : app.end_date}
+        jso.append(js)
+    result = json.dumps(jso)
+    return result
+
+#Converts an array of appointments retrieved in the database with on the token to a JSON file
+def sendAppointmentByTokenJson(token):
+    app = getAppointmentByToken(token)
+    jso = []
+    js = {"id":app.id,"title": app.firstname + ' '+app.lastname, "begin" : app.begin_date, "end" : app.end_date}
+    result = json.dumps(js)
+    return result
+
+#Converts a received json file that contains an appointment to a appointment object
+def reveiveAppointment(json_file):
+    appointment = Appointment(0,json_file["firstname"],json_file["lastname"], json_file["email"], json_file["begin_date"], json_file["end_date"], json_file["business_id"], 0)
+    return appointment
 
 #will return a json file with data of the business
 def sendBusiness(business_id):
@@ -42,6 +66,7 @@ def sendBusinessOwner(owner_id):
     result = json.dumps(js)
     return result
 
+#Converts a json object that contains the data of a business owner to a business owner object
 def receiveBusinessOwnerJson(json_file):
     business_owner = Business_Owner('0', json_file["firstname"], json_file["lastname"], json_file["date_of_birth"], json_file["email"], json_file["phone"])
     return business_owner
@@ -57,6 +82,16 @@ def receiveBusinessOwnerJson(json_file):
 #     "email" : "",
 #     "phone" : "",
 #     "id_owner" : ""
+# }
+
+#appointment
+# {
+#     "firstname" : 
+#     "lastname" : 
+#     "email" : 
+#     "begindate":
+#     "enddate":
+#     "business_id":
 # }
 
 # {

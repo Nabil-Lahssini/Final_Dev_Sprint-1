@@ -9,8 +9,10 @@ cnx = connect()
 def setBusiness(p):
     query = "INSERT INTO `business` VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
     cursor = cnx.cursor()
-    cursor.execute(query, (p.id , encrypt(p.business_type), encrypt(p.name),encrypt(p.appointment_time),encrypt(p.country),encrypt(p.city), encrypt(p.code), encrypt(p.street),encrypt(p.house_nr) ,encrypt(p.email) ,encrypt(p.phone) ,encrypt(p.id_owner)))
+    id = generateId()
+    cursor.execute(query, (id , encrypt(p.business_type), encrypt(p.name),encrypt(p.appointment_time),encrypt(p.country),encrypt(p.city), encrypt(p.code), encrypt(p.street),encrypt(p.house_nr) ,encrypt(p.email) ,encrypt(p.phone) ,encrypt(p.id_owner)))
     cnx.commit()
+    return id
 
 def setBusinessSearch(p):
     query = "INSERT INTO `search_business` VALUES (NULL,%s,%s);"
@@ -21,6 +23,12 @@ def setBusinessSearch(p):
     cnx.commit()
     setBusiness(p)
     return id
+
+def deleteBusinessSearch(id):
+    query = "DELETE FROM search_business where business_id = %s"
+    cursor = cnx.cursor()
+    cursor.execute(query, (id, ))
+    cnx.commit()
 
 def updateBusiness(p):
     query = "UPDATE `business` SET `name`=%s,`address`=%s,`appointment_time`=%s,`email`=%s,`phone`=%s,`id_owner`=%s WHERE id = %s"
@@ -43,9 +51,9 @@ def getBusinessBySearch(term):
     cursor = cnx.cursor()
     cursor.execute(query, ('%'+term+'%', ))
     business = []
-    for (id_search, name_search, token, id,business_type, name, address, appointment_time, email, phone, id_owner) in cursor:
+    for (id_search, name_search, token, id,business_type, name, appointment_time, country, city, code, street, house_nr, email, phone, id_owner) in cursor:
         del id_search, name_search, token
-        business.append(Business(id, decrypt(business_type), decrypt(name), decrypt(address), decrypt(appointment_time), decrypt(email), decrypt(phone), decrypt(id_owner)))
+        business.append(Business(id, decrypt(business_type), decrypt(name), decrypt(appointment_time),decrypt(country), decrypt(city), decrypt(code), decrypt(street), decrypt(house_nr), decrypt(email), decrypt(phone), decrypt(id_owner)))
     cnx.commit()
     return business
 
@@ -54,3 +62,4 @@ def deleteBusiness(id):
     cursor = cnx.cursor()
     cursor.execute(query, (id, ))
     cnx.commit()
+    deleteBusinessSearch(id)
